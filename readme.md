@@ -1,6 +1,6 @@
 # node-optipng [![Build Status](https://secure.travis-ci.org/yeoman/node-optipng.png?branch=master)](http://travis-ci.org/yeoman/node-optipng)
 
-[OptiPNG](http://optipng.sourceforge.net) 0.7.4 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows.
+[OptiPNG](http://optipng.sourceforge.net) 0.7.4 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Used to losslessly minify PNG images.
 
 
 ## Example usage
@@ -19,6 +19,6 @@ You can also run it directly from `./node_modules/.bin/optipng`
 
 ## License
 
-Everything excluding the binaries licensed under the [BSD license](http://opensource.org/licenses/bsd-license.php)
+Everything excluding the binaries licensed under the [BSD license](http://opensource.org/licenses/bsd-license.php) and copyright Google.
 
-OptiPNG licensed under the [zlib license](http://optipng.sourceforge.net/license.txt)
+OptiPNG licensed under the [zlib license](http://optipng.sourceforge.net/license.txt) and copyright Cosmin Truta and the Contributing Authors.
