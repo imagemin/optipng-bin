@@ -12,7 +12,7 @@ describe('OptiPNG', function() {
 	});
 
 	it('should return path to OptiPNG binary', function(cb) {
-		var binPath = require('../lib/optipng.js').path;
+		var binPath = require('../lib/optipng-bin.js').path;
 
 		execFile(binPath, ['-v'], function(err, stdout) {
 			assert(stdout.indexOf('OptiPNG') !== -1);
@@ -21,7 +21,7 @@ describe('OptiPNG', function() {
 	});
 
 	it('should proxy OptiPNG', function(cb) {
-		var binPath = path.join(__dirname, '../bin/optipng');
+		var binPath = path.join(__dirname, '../bin/optipng-bin');
 
 		execFile(binPath, ['-v'], function(err, stdout) {
 			assert(stdout.indexOf('OptiPNG') !== -1);
@@ -30,7 +30,7 @@ describe('OptiPNG', function() {
 	});
 
 	it('should minify a .png', function(cb) {
-		var binPath = path.join(__dirname, '../bin/optipng');
+		var binPath = path.join(__dirname, '../bin/optipng-bin');
 		var args = [
 			'-strip',
 			'all',
