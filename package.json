@@ -17,7 +17,8 @@
 		"url": "git://github.com/yeoman/node-optipng-bin.git"
 	},
 	"scripts": {
-		"test": "node node_modules/mocha/bin/mocha test/test-*.js"
+		"test": "node node_modules/mocha/bin/mocha test/test-*.js",
+        "postinstall": "node rebuild-optipng.js"
 	},
 	"engines": {
 		"node": ">=0.8.0"
@@ -25,6 +26,9 @@
 	"licenses": [{
 		"type": "BSD"
 	}],
+    "dependencies": {
+        "colors": "~0.6.0"
+    },
 	"devDependencies": {
 		"mocha": "~1.6.0"
 	}
