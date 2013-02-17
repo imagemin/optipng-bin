@@ -16,7 +16,7 @@ which('make', function(err, makepath){
         var buildScript = 'make clean &&' +
                           './configure --with-system-zlib --bindir=' + binDir  + ' --mandir=man && ' +
                           'make install';
-        exec(buildScript, {cwd: './optipng/'}, function(error, stdout, stderr) {
+        exec(buildScript, {cwd: './optipng/'}, function(err, stdout, stderr) {
             if (err) {
                 console.log(err.red);
                 return;
