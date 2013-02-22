@@ -1,31 +1,46 @@
 {
-	"name": "optipng-bin",
-	"version": "0.1.0",
-	"description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
-	"keywords": ["png", "compress", "minify", "optimize", "img", "image"],
-	"homepage": "https://github.com/yeoman/node-optipng-bin",
-	"bugs": "https://github.com/yeoman/node-optipng-bin/issues",
-	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "http://sindresorhus.com"
-	},
-	"main": "lib/optipng-bin.js",
-	"bin": "bin/optipng-bin",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/yeoman/node-optipng-bin.git"
-	},
-	"scripts": {
-		"test": "node node_modules/mocha/bin/mocha test/test-*.js"
-	},
-	"engines": {
-		"node": ">=0.8.0"
-	},
-	"licenses": [{
-		"type": "BSD"
-	}],
-	"devDependencies": {
-		"mocha": "~1.6.0"
-	}
+  "name": "optipng-bin",
+  "version": "0.1.0",
+  "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
+  "keywords": [
+    "png",
+    "compress",
+    "minify",
+    "optimize",
+    "img",
+    "image"
+  ],
+  "homepage": "https://github.com/yeoman/node-optipng-bin",
+  "bugs": "https://github.com/yeoman/node-optipng-bin/issues",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "main": "lib/optipng-bin.js",
+  "bin": "bin/optipng-bin",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yeoman/node-optipng-bin.git"
+  },
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha test/test-*.js",
+    "postinstall": "node rebuild-optipng.js"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ],
+  "dependencies": {
+    "colors": "~0.6.0",
+    "which": "~1.0.5",
+    "exec-sync": "~0.1.5"
+  },
+  "devDependencies": {
+    "mocha": "~1.6.0"
+  }
 }
