@@ -1,6 +1,6 @@
 {
   "name": "optipng-bin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "keywords": [
     "png",
