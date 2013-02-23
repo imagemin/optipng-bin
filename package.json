@@ -1,6 +1,6 @@
 {
   "name": "optipng-bin",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "keywords": [
     "png",
@@ -24,8 +24,8 @@
     "url": "git://github.com/yeoman/node-optipng-bin.git"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/test-*.js",
-    "postinstall": "node rebuild-optipng.js"
+    "test": "mocha test/test-*.js",
+    "postinstall": "node build.js"
   },
   "engines": {
     "node": ">=0.8.0"
@@ -37,8 +37,7 @@
   ],
   "dependencies": {
     "colors": "~0.6.0",
-    "which": "~1.0.5",
-    "exec-sync": "~0.1.5"
+    "which": "~1.0.5"
   },
   "devDependencies": {
     "mocha": "~1.6.0"

@@ -1,35 +1,34 @@
 /*global describe, it, after */
 'use strict';
-
 var assert = require('assert');
 var path = require('path');
 var fs = require('fs');
 var execFile = require('child_process').execFile;
 
-describe('OptiPNG', function() {
-	after(function() {
+describe('OptiPNG', function () {
+	after(function () {
 		fs.unlinkSync('test/minified.png');
 	});
 
-	it('should return path to OptiPNG binary', function(cb) {
+	it('should return path to OptiPNG binary', function (cb) {
 		var binPath = require('../lib/optipng-bin.js').path;
 
-		execFile(binPath, ['-v'], function(err, stdout) {
+		execFile(binPath, ['-v'], function (err, stdout) {
 			assert(stdout.indexOf('OptiPNG') !== -1);
 			cb();
 		});
 	});
 
-	it('should proxy OptiPNG', function(cb) {
+	it('should proxy OptiPNG', function (cb) {
 		var binPath = path.join(__dirname, '../bin/optipng-bin');
 
-		execFile(binPath, ['-v'], function(err, stdout) {
+		execFile(binPath, ['-v'], function (err, stdout) {
 			assert(stdout.indexOf('OptiPNG') !== -1);
 			cb();
 		});
 	});
 
-	it('should minify a .png', function(cb) {
+	it('should minify a .png', function (cb) {
 		var binPath = path.join(__dirname, '../bin/optipng-bin');
 		var args = [
 			'-strip',
@@ -39,7 +38,7 @@ describe('OptiPNG', function() {
 			path.join(__dirname, 'fixtures', 'test.png')
 		];
 
-		execFile(binPath, args, function() {
+		execFile(binPath, args, function () {
 			var actual = fs.statSync('test/minified.png').size;
 			var original = fs.statSync('test/fixtures/test.png').size;
 			assert(actual < original);
