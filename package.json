@@ -25,7 +25,7 @@
   },
   "scripts": {
     "test": "mocha test/test-*.js",
-    "postinstall": "node main.js"
+    "postinstall": "node pre-build.js"
   },
   "engines": {
     "node": ">=0.8.0"
