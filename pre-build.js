@@ -6,7 +6,7 @@ var colors = require('colors');
 
 mocha.addFile('test/test-optipng-path.js');
 
-var runner = mocha.run(function(failures){
+var runner = mocha.run(function (failures) {
     if (failures > 0){
         build();
     } else{
