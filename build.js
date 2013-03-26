@@ -6,13 +6,13 @@ var which = require('which');
 var path = require('path');
 
 
-module.exports = function(){
-    which('make', function (err) {
-        if (err) {
-            return console.log(err.red);
-        }
+module.exports = function () {
+    if (process.platform === 'darwin' || process.platform === 'linux') {
+        which('make', function (err) {
+            if (err) {
+                return console.log(err);
+            }
 
-        if (process.platform === 'darwin' || process.platform === 'linux') {
             var binDir = path.dirname(binPath);
             var buildScript = 'make clean &&' +
                               './configure --with-system-zlib --bindir=' + binDir  + ' --mandir=man && ' +
@@ -24,6 +24,6 @@ module.exports = function(){
 
                 console.log('OptiPNG rebuilt successfully'.green);
             });
-        }
-    });
+        });
+    }
 }
