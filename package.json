@@ -29,7 +29,7 @@
     "url": "git://github.com/yeoman/node-optipng-bin.git"
   },
   "scripts": {
-    "test": "mocha test/test-*.js",
+    "test": "mocha",
     "postinstall": "node pre-build.js"
   },
   "engines": {
