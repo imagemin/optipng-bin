@@ -43,7 +43,6 @@
   "dependencies": {
     "colors": "~0.6.0",
     "which": "~1.0.5",
-    "mocha": "~1.6.0"
-  },
-  "devDependencies": {}
+    "mocha": "~1.9.0"
+  }
 }
