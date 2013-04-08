@@ -6,22 +6,24 @@ var which = require('which');
 var path = require('path');
 
 
-which('make', function (err) {
-    if (err) {
-        return console.log(err.red);
-    }
-
+module.exports = function () {
     if (process.platform === 'darwin' || process.platform === 'linux') {
-        var binDir = path.dirname(binPath);
-        var buildScript = 'make clean &&' +
-                          './configure --with-system-zlib --bindir=' + binDir  + ' --mandir=man && ' +
-                          'make install';
-        exec(buildScript, { cwd: './optipng/' }, function (err) {
+        which('make', function (err) {
             if (err) {
-                return console.log(err.red);
+                return console.log(err);
             }
 
-            console.log('OptiPNG rebuilt successfully'.green);
+            var binDir = path.dirname(binPath);
+            var buildScript = 'make clean &&' +
+                              './configure --with-system-zlib --bindir=' + binDir  + ' --mandir=man && ' +
+                              'make install';
+            exec(buildScript, { cwd: './optipng/' }, function (err) {
+                if (err) {
+                    return console.log(err.red);
+                }
+
+                console.log('OptiPNG rebuilt successfully'.green);
+            });
         });
     }
-});
+}
