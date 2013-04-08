@@ -1,6 +1,6 @@
 {
   "name": "optipng-bin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "keywords": [
     "png",
@@ -17,9 +17,11 @@
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
   },
-  "maintainers":[{
-    "name": "Duncan Wong"
-  }],
+  "maintainers": [
+    {
+      "name": "Duncan Wong"
+    }
+  ],
   "main": "lib/optipng-bin.js",
   "bin": "bin/optipng-bin",
   "repository": {
@@ -43,6 +45,5 @@
     "which": "~1.0.5",
     "mocha": "~1.6.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
