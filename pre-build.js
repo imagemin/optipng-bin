@@ -1,4 +1,5 @@
 'use strict';
+
 var Mocha = require('mocha');
 var colors = require('colors');
 var build = require('./build.js');

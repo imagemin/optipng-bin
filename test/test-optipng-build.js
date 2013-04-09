@@ -1,5 +1,6 @@
 /*global describe, it */
 'use strict';
+
 var assert = require('assert');
 var exec = require('child_process').exec;
 var binPath = require('../lib/optipng-bin.js').path;
