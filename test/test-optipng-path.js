@@ -3,7 +3,7 @@
 var assert = require('assert');
 var path = require('path');
 var fs = require('fs');
-var execFile = require('child_process').execFile;
+var exec = require('child_process').exec;
 
 describe('OptiPNG', function () {
 	after(function () {
@@ -13,17 +13,17 @@ describe('OptiPNG', function () {
 	it('should return path to OptiPNG binary', function (cb) {
 		var binPath = require('../lib/optipng-bin.js').path;
 
-		execFile(binPath, ['-v'], function (err, stdout) {
-			assert(stdout.indexOf('OptiPNG') !== -1);
+		exec(binPath + ' -v -', function (err, stdout, stderr) {
+			assert(stderr.toString().indexOf('OptiPNG') !== -1);
 			cb();
 		});
 	});
 
-	it('should proxy OptiPNG', function (cb) {
+	it('should successfully proxy OptiPNG', function (cb) {
 		var binPath = path.join(__dirname, '../bin/optipng-bin');
 
-		execFile(binPath, ['-v'], function (err, stdout) {
-			assert(stdout.indexOf('OptiPNG') !== -1);
+		exec('node ' + binPath + ' -v -', function (err, stdout, stderr) {
+			assert(stderr.toString().indexOf('OptiPNG') !== -1);
 			cb();
 		});
 	});
@@ -38,7 +38,7 @@ describe('OptiPNG', function () {
 			path.join(__dirname, 'fixtures', 'test.png')
 		];
 
-		execFile(binPath, args, function () {
+		exec('node ' + binPath + ' ' + args.join(' '), function () {
 			var actual = fs.statSync('test/minified.png').size;
 			var original = fs.statSync('test/fixtures/test.png').size;
 			assert(actual < original);
