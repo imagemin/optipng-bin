@@ -2,7 +2,8 @@
 'use strict';
 
 var spawn = require('child_process').spawn;
-var binPath = require('../lib/optipng-bin').path;
+var binPath = require('../lib/optipng-bin.js').path;
+console.log(binPath);
 
 spawn(binPath, process.argv.slice(2), { stdio: 'inherit' })
 	.on('exit', process.exit);
