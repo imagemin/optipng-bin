@@ -1,10 +1,10 @@
 /*global describe, it, after */
 'use strict';
 
-var assert = require('assert');
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
 var execFile = require('child_process').execFile;
+var assert = require('assert');
 
 describe('OptiPNG', function () {
 	after(function () {
