@@ -12,19 +12,12 @@ var version = '0.7.4';
 var binPath = require('./lib/optipng-bin').path;
 var tmpPath = path.join(tmpdir(), 'optipng-' + version);
 var urlPath = 'http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-' + version + '/optipng-' + version + '.tar.gz';
-var win32 = process.platform === 'win32';
 
 function tmpdir() {
-    if (win32) {
-        return process.env.TEMP ||
-        process.env.TMP ||
-        (process.env.SystemRoot || process.env.windir) + '\\temp';
-    } else {
-        return process.env.TMPDIR ||
-        process.env.TMP ||
-        process.env.TEMP ||
-        '/tmp';
-    }
+	return process.env.TMPDIR ||
+	process.env.TMP ||
+	process.env.TEMP ||
+	'/tmp';
 }
 
 module.exports = function () {
