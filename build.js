@@ -9,7 +9,7 @@ var request = require('request');
 var zlib = require('zlib');
 
 var version = '0.7.4';
-var binPath = require('./lib/optipng-bin').path;
+var binPath = require('./lib/optipng-bin').binPath;
 var tmpPath = path.join(tmpdir(), 'optipng-' + version);
 var urlPath = 'http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-' + version + '/optipng-' + version + '.tar.gz';
 

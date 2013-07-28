@@ -1,10 +1,10 @@
 /*global describe, it, after */
 'use strict';
 
-var assert = require('assert');
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
 var execFile = require('child_process').execFile;
+var assert = require('assert');
 
 describe('OptiPNG', function () {
 	after(function () {
@@ -12,7 +12,7 @@ describe('OptiPNG', function () {
 	});
 
 	it('should return path to OptiPNG binary', function (cb) {
-		var binPath = require('../lib/optipng-bin.js').path;
+		var binPath = require('../lib/optipng-bin.js').binPath;
 
 		execFile(binPath, ['-v', '-'], function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('OptiPNG') !== -1);
