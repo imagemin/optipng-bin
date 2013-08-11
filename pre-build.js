@@ -5,6 +5,9 @@ var chalk = require('chalk');
 var Mocha = require('mocha');
 var mocha = new Mocha({ui: 'bdd', reporter: 'min'});
 var build = require('./build.js');
+var optipng = require('./lib/optipng-bin');
+var binPath = optipng.path;
+var binUrl = optipng.url;
 
 function runTest() {
 	mocha.addFile('test/test-optipng-path.js');
@@ -18,18 +21,13 @@ function runTest() {
 	});
 }
 
-var binPath = require('./lib/optipng-bin').path;
-var binUrl = require('./lib/optipng-bin').url;
-
-fs.exists(binPath, function (exists) {
-	if (exists) {
-		runTest();
-	} else {
-		request.get(binUrl)
-			.pipe(fs.createWriteStream(binPath))
-			.on('close', function () {
-					fs.chmod(binPath, '0755');
-					runTest();
-				});
-	}
-});
+if (fs.existsSync(binPath)) {
+	runTest();
+} else {
+	request.get(binUrl)
+		.pipe(fs.createWriteStream(binPath))
+		.on('close', function () {
+			fs.chmod(binPath, '0755');
+			runTest();
+		});
+}
