@@ -10,7 +10,7 @@ var binPath = optipng.path;
 var binUrl = optipng.url;
 
 function runTest() {
-	mocha.addFile('test/test-optipng-path.js');
+	mocha.addFile('test/test-path.js');
 	mocha.run(function (failures) {
 		if (failures > 0) {
 			console.log(chalk.red('pre-build test failed, compiling from source...'));
