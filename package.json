@@ -22,8 +22,10 @@
       "name": "Duncan Wong"
     }
   ],
-  "main": "lib/optipng-bin.js",
-  "bin": "bin/optipng-bin",
+  "main": "lib/optipng",
+  "bin": {
+    "optipng": "bin/optipng.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/yeoman/node-optipng-bin.git"

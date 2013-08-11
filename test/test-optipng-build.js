@@ -1,10 +1,9 @@
 /*global describe, it */
 'use strict';
-
 var fs = require('fs');
 var exec = require('child_process').exec;
 var assert = require('assert');
-var binPath = require('../lib/optipng-bin.js').path;
+var binPath = require('../lib/optipng.js').path;
 
 describe('OptiPNG rebuild', function () {
 	it('it should rebuild the optipng binaries', function (cb) {

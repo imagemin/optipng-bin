@@ -5,7 +5,7 @@ var chalk = require('chalk');
 var Mocha = require('mocha');
 var mocha = new Mocha({ui: 'bdd', reporter: 'min'});
 var build = require('./build.js');
-var optipng = require('./lib/optipng-bin');
+var optipng = require('./lib/optipng');
 var binPath = optipng.path;
 var binUrl = optipng.url;
 

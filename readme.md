@@ -14,7 +14,7 @@ execFile(optipngPath, ['-v'], function(err, stdout, stderr) {
 });
 ```
 
-You can also run it directly from `./node_modules/.bin/optipng-bin`
+You can also run it directly from `./node_modules/.bin/optipng`
 
 
 ## License
