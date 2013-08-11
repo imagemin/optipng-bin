@@ -1,9 +1,8 @@
 'use strict';
-
 var exec = require('child_process').exec;
 var path = require('path');
 var which = require('which');
-var colors = require('colors');
+var chalk = require('chalk');
 var tar = require('tar');
 var request = require('request');
 var zlib = require('zlib');
@@ -30,7 +29,7 @@ module.exports = function () {
 		var proxy = process.env.http_proxy || process.env.HTTP_PROXY ||
 			process.env.https_proxy || process.env.HTTPS_PROXY || '';
 
-		console.log('Fetching %s...'.yellow, urlPath);
+		console.log(chalk.yellow('Fetching %s...'), urlPath);
 		var req = request.defaults({ proxy: proxy }).get(urlPath, function (err, resp) {
 			if (resp.statusCode !== 200) {
 				throw err;
@@ -41,14 +40,14 @@ module.exports = function () {
 			.pipe(zlib.Gunzip())
 			.pipe(tar.Extract(opts))
 			.on('close', function () {
-				console.log('Done in %s'.green, tmpPath);
+				console.log(chalk.green('Done in %s'), tmpPath);
 
 				which('make', function (err) {
 					if (err) {
 						throw err;
 					}
 
-					console.log('\nBuilding OptiPNG...'.yellow);
+					console.log(chalk.yellow('\nBuilding OptiPNG...'));
 					var binDir = path.dirname(binPath);
 					var buildScript = './configure --with-system-zlib --bindir=' + binDir + ' --mandir=man && ' +
 									  'make install';
@@ -56,7 +55,7 @@ module.exports = function () {
 						if (err) {
 							throw err;
 						}
-						console.log('OptiPNG rebuilt successfully'.green);
+						console.log(chalk.green('OptiPNG rebuilt successfully'));
 					});
 				});
 			});
