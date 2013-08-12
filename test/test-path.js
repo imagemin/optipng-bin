@@ -1,6 +1,5 @@
 /*global describe, it, after */
 'use strict';
-
 var fs = require('fs');
 var path = require('path');
 var execFile = require('child_process').execFile;
@@ -12,7 +11,7 @@ describe('OptiPNG', function () {
 	});
 
 	it('should return path to OptiPNG binary', function (cb) {
-		var binPath = require('../lib/optipng-bin.js').path;
+		var binPath = require('../lib/optipng.js').path;
 
 		execFile(binPath, ['-v', '-'], function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('OptiPNG') !== -1);
@@ -21,7 +20,7 @@ describe('OptiPNG', function () {
 	});
 
 	it('should successfully proxy OptiPNG', function (cb) {
-		var binPath = path.join(__dirname, '../bin/optipng-bin');
+		var binPath = path.join(__dirname, '../bin/optipng.js');
 
 		execFile('node', [binPath, '-v', '-'], function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('OptiPNG') !== -1);
@@ -30,7 +29,7 @@ describe('OptiPNG', function () {
 	});
 
 	it('should minify a .png', function (cb) {
-		var binPath = path.join(__dirname, '../bin/optipng-bin');
+		var binPath = path.join(__dirname, '../bin/optipng.js');
 		var args = [
 			'-strip',
 			'all',

@@ -1,7 +1,7 @@
 {
   "name": "optipng-bin",
   "version": "0.2.6",
-  "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
+  "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD and Windows",
   "keywords": [
     "png",
     "compress",
@@ -22,8 +22,10 @@
       "name": "Duncan Wong"
     }
   ],
-  "main": "lib/optipng-bin.js",
-  "bin": "bin/optipng-bin",
+  "main": "lib/optipng",
+  "bin": {
+    "optipng": "bin/optipng.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/yeoman/node-optipng-bin.git"
@@ -41,10 +43,15 @@
     }
   ],
   "dependencies": {
-    "colors": "~0.6.0",
     "which": "~1.0.5",
-    "mocha": "~1.9.0",
+    "mocha": "~1.12.0",
     "tar": "~0.1.17",
-    "request": "~2.16.6"
-  }
+    "request": "~2.26.0",
+    "chalk": "~0.2.0"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "test"
+  ]
 }
