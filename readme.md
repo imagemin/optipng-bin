@@ -1,6 +1,6 @@
 # node-optipng-bin [![Build Status](https://secure.travis-ci.org/yeoman/node-optipng-bin.png?branch=master)](http://travis-ci.org/yeoman/node-optipng-bin)
 
-[OptiPNG](http://optipng.sourceforge.net) 0.7.4 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Used to losslessly minify PNG images.
+[OptiPNG](http://optipng.sourceforge.net) 0.7.4 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux, Solaris, and Windows. Used to losslessly minify PNG images.
 
 
 ## Example usage
