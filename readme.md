@@ -1,6 +1,6 @@
 # node-optipng-bin [![Build Status](https://secure.travis-ci.org/yeoman/node-optipng-bin.png?branch=master)](http://travis-ci.org/yeoman/node-optipng-bin)
 
-[OptiPNG](http://optipng.sourceforge.net) 0.7.4 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD and Windows.
+[OptiPNG](http://optipng.sourceforge.net) 0.7.4 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows.
 
 > OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.
 
@@ -16,7 +16,7 @@ var execFile = require('child_process').execFile;
 var optipngPath = require('optipng-bin').path;
 
 execFile(optipngPath, ['-v'], function(err, stdout, stderr) {
-	console.log('OptiPNG version:', stdout.match(/\d\.\d\.\d/)[0]);
+    console.log('OptiPNG version:', stdout.match(/\d\.\d\.\d/)[0]);
 });
 ```
 
