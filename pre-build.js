@@ -1,5 +1,7 @@
 'use strict';
 var fs = require('fs');
+var path = require('path');
+var mkdir = require('mkdirp');
 var request = require('request');
 var chalk = require('chalk');
 var Mocha = require('mocha');
@@ -24,7 +26,11 @@ function runTest() {
 if (fs.existsSync(binPath)) {
 	runTest();
 } else {
-	request.get(binUrl)
+	if (!fs.existsSync(path.dirname(binPath))) {
+		mkdir.sync(path.dirname(binPath));
+	}
+
+	return request.get(binUrl)
 		.pipe(fs.createWriteStream(binPath))
 		.on('close', function () {
 			fs.chmod(binPath, '0755');
