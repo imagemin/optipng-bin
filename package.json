@@ -20,6 +20,11 @@
   "maintainers": [
     {
       "name": "Duncan Wong"
+    },
+    {
+      "name": "Kevin Martensson",
+      "email": "kevinmartensson@gmail.com",
+      "url": "http://kevinmartensson.com"
     }
   ],
   "main": "lib/optipng",
@@ -32,7 +37,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "postinstall": "node pre-build.js"
+    "postinstall": "node lib/check.js"
   },
   "engines": {
     "node": ">=0.8.0"
@@ -43,18 +48,14 @@
     }
   ],
   "dependencies": {
-    "which": "~1.0.5",
-    "mocha": "~1.12.0",
-    "tar": "~0.1.17",
-    "request": "~2.26.0",
-    "chalk": "~0.2.0",
-    "mkdirp": "~0.3.5"
+    "bin-wrapper": "~0.1.3",
+    "chalk": "~0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0"
   },
   "files": [
     "bin",
-    "lib",
-    "test",
-    "build.js",
-    "pre-build.js"
+    "lib"
   ]
 }

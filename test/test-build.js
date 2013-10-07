@@ -1,20 +1,28 @@
 /*global describe, it */
 'use strict';
-var fs = require('fs');
-var exec = require('child_process').exec;
+
 var assert = require('assert');
-var binPath = require('../lib/optipng.js').path;
+var Bin = require('bin-wrapper');
+var fs = require('fs');
+var options = require('../lib/optipng').options;
+var path = require('path');
 
-describe('OptiPNG rebuild', function () {
-	it('it should rebuild the optipng binaries', function (cb) {
-		this.timeout(15000);
+describe('optipng.build()', function () {
+	it('should rebuild the optipng binaries', function (cb) {
+		this.timeout(false);
 
-		var origCTime = fs.statSync(binPath).ctime;
+		options.path = path.join(__dirname, '../tmp');
+		options.buildScript = './configure --with-system-zlib --bindir=' + path.join(__dirname, '../tmp') +
+				 			  ' --mandir=man && make install';
 
-		exec('node build.js', {}, function (err) {
-			var actualCTime = fs.statSync(binPath).ctime;
+		var bin = new Bin(options);
+
+		bin.build(function () {
+			var origCTime = fs.statSync(bin.path).ctime;
+			var actualCTime = fs.statSync(bin.path).ctime;
+
 			assert(actualCTime !== origCTime);
-			cb(err);
-		}).path;
+			cb();
+		});
 	});
 });
