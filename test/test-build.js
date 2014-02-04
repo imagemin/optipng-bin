@@ -13,7 +13,7 @@ describe('optipng.build()', function () {
 		var bin = new Bin(options);
 
 		bin.path = path.join(__dirname, '../tmp', bin.bin);
-		bin.buildScript = './configure --with-system-zlib --bindir="' + path.join(__dirname, '../tmp') + '" && ' +
+		bin.buildScript = './configure --with-system-zlib --prefix="`pwd`/out" --bindir="' + path.join(__dirname, '../tmp') + '" && ' +
 				 		  'make install';
 
 		bin.build(function () {
