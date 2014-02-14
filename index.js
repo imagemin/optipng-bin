@@ -11,8 +11,8 @@ var path = require('path');
 
 var bin = new BinWrapper({ bin: 'optipng', dest: path.join(__dirname, 'vendor') });
 var bs = './configure --with-system-zlib ' +
-		 '--mandir="' + path.join(__dirname, 'vendor/man') + '" ' +
-		 '--bindir="' + path.join(__dirname, 'vendor') + '" && ' +
+		 '--mandir="' + path.join(bin.dest, 'man') + '" ' +
+		 '--bindir="' + bin.dest + '" && ' +
 		 'make install';
 
 /**
