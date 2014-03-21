@@ -9,7 +9,7 @@ var path = require('path');
 var spawn = require('child_process').spawn;
 var rm = require('rimraf');
 
-describe('gifsicle()', function () {
+describe('optipng()', function () {
 	afterEach(function (cb) {
 		rm(path.join(__dirname, 'tmp'), cb);
 	});
