@@ -22,13 +22,13 @@ var bs = './configure --with-system-zlib ' +
 fs.exists(bin.path, function (exists) {
 	if (!exists) {
 		bin
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/osx/optipng', 'darwin')
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/linux/x86/optipng', 'linux', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/linux/x64/optipng', 'linux', 'x64')
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/freebsd/optipng', 'freebsd')
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/sunos/x86/optipng', 'sunos', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/sunos/x64/optipng', 'sunos', 'x64')
-			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.1/vendor/win/optipng.exe', 'win32')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/osx/optipng', 'darwin')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/linux/x86/optipng', 'linux', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/linux/x64/optipng', 'linux', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/freebsd/optipng', 'freebsd')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/sunos/x86/optipng', 'sunos', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/sunos/x64/optipng', 'sunos', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-optipng-bin/0.3.2/vendor/win/optipng.exe', 'win32')
 			.addSource('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.4/optipng-0.7.4.tar.gz')
 			.check()
 			.on('error', function (err) {
