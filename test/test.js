@@ -7,7 +7,7 @@ var BinWrapper = require('bin-wrapper');
 var fs = require('fs');
 var path = require('path');
 var pipe = require('multipipe');
-var spawn = process.platform === 'win32' ? require('win-spawn') : require('child_process').spawn;
+var spawn = require('win-spawn');
 var rm = require('rimraf');
 
 describe('optipng()', function () {

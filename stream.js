@@ -5,7 +5,7 @@ var concat = require('concat-stream');
 var fs = require('fs');
 var optipng = require('./').path;
 var rm = require('rimraf');
-var spawn = process.platform === 'win32' ? require('win-spawn') : require('child_process').spawn;
+var spawn = require('win-spawn');
 var tempfile = require('tempfile');
 
 /**
