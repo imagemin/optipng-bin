@@ -6,7 +6,8 @@ var binCheck = require('bin-check');
 var BinWrapper = require('bin-wrapper');
 var fs = require('fs');
 var path = require('path');
-var spawn = require('child_process').spawn;
+var pipe = require('multipipe');
+var spawn = process.platform === 'win32' ? require('win-spawn') : require('child_process').spawn;
 var rm = require('rimraf');
 
 describe('optipng()', function () {
@@ -56,5 +57,23 @@ describe('optipng()', function () {
 
 			cb(assert(dest < src));
 		});
+	});
+
+	it('should minify a PNG using stdin and stdout', function (cb) {
+		var stream = require('../').stream;
+		var src = path.join(__dirname, 'fixtures/test.png');
+		var dest = path.join(__dirname, 'tmp/test.png');
+		var args = [
+			'-strip', 'all',
+			'-clobber',
+		];
+		var cp = spawn(stream, args);
+
+		fs.createReadStream(src)
+			.pipe(pipe(cp.stdin, cp.stdout))
+			.pipe(fs.createWriteStream(dest))
+				.on('close', function () {
+					cb(assert.ok(fs.statSync(dest).size < fs.statSync(src).size));
+				});
 	});
 });
