@@ -1,35 +1,36 @@
-#!/usr/bin/env node
 'use strict';
 
-var concat = require('concat-stream');
 var fs = require('fs');
 var optipng = require('./').path;
 var rm = require('rimraf');
 var spawn = require('win-spawn');
 var tempfile = require('tempfile');
+var through = require('through2');
 
 /**
  * Streaming interface for OptiPNG
  */
 
-process.stdin.pipe(concat(function (data) {
-    var src = tempfile('.png');
-    var dest = tempfile('.png');
+module.exports = function (args) {
+	var src = tempfile('.png');
+	var dest = tempfile('.png');
 
-    fs.writeFile(src, data, function (err) {
-        var args = process.argv.slice(2).concat(['-out', dest, src]);
-        var cp = spawn(optipng, args, { stdio: 'inherit' });
+	return through(function (chunk, enc, cb) {
+		args = args.concat(['-out', dest, src]);
 
-        if (err) {
-            throw err;
-        }
+		var cp = spawn(optipng, args);
+		var self = this;
 
-        cp.on('exit', function () {
-            rm.sync(src);
+		fs.writeFileSync(src, chunk);
 
-            fs.createReadStream(dest).pipe(process.stdout).on('close', function () {
-                rm.sync(dest);
-            });
-        });
-    });
-}));
+		cp.on('exit', function () {
+			var data = fs.readFileSync(dest);
+
+			rm.sync(src);
+			rm.sync(dest);
+
+			self.push(data);
+			cb();
+		});
+	});
+};

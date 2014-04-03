@@ -6,7 +6,6 @@ var binCheck = require('bin-check');
 var BinWrapper = require('bin-wrapper');
 var fs = require('fs');
 var path = require('path');
-var pipe = require('multipipe');
 var spawn = require('win-spawn');
 var rm = require('rimraf');
 
@@ -55,25 +54,29 @@ describe('optipng()', function () {
 			var src = fs.statSync(path.join(__dirname, 'fixtures/test.png')).size;
 			var dest = fs.statSync(path.join(__dirname, 'tmp/test.png')).size;
 
-			cb(assert(dest < src));
+			assert(dest < src);
+			assert(dest > 0);
+			cb();
 		});
 	});
 
 	it('should minify a PNG using stdin and stdout', function (cb) {
-		var stream = require('../').stream;
+		var cp = require('../').stream;
 		var src = path.join(__dirname, 'fixtures/test.png');
 		var dest = path.join(__dirname, 'tmp/test.png');
 		var args = [
 			'-strip', 'all',
 			'-clobber',
+			'-o7'
 		];
-		var cp = spawn(stream, args);
 
 		fs.createReadStream(src)
-			.pipe(pipe(cp.stdin, cp.stdout))
+			.pipe(cp(args))
 			.pipe(fs.createWriteStream(dest))
 				.on('close', function () {
-					cb(assert.ok(fs.statSync(dest).size < fs.statSync(src).size));
+					assert.ok(fs.statSync(dest).size < fs.statSync(src).size);
+					assert.ok(fs.statSync(dest).size > 0);
+					cb();
 				});
 	});
 });

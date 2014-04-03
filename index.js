@@ -57,4 +57,4 @@ fs.exists(bin.path, function (exists) {
  */
 
 module.exports.path = bin.path;
-module.exports.stream = path.join(__dirname, 'stream.js');
+module.exports.stream = require('./stream.js');
