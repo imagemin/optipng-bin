@@ -9,7 +9,7 @@ var path = require('path');
  * Initialize a new BinWrapper
  */
 
-var bin = new BinWrapper({ bin: 'optipng', dest: path.join(__dirname, 'vendor') });
+var bin = new BinWrapper({ bin: 'optipng', version: '0.7.4', dest: path.join(__dirname, 'vendor') });
 var bs = './configure --with-system-zlib ' +
 		 '--mandir="' + path.join(bin.dest, 'man') + '" ' +
 		 '--bindir="' + bin.dest + '" && ' +
