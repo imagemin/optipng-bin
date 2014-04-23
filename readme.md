@@ -4,23 +4,33 @@
 
 > OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.
 
+
 ## Install
 
-Install with [npm](https://npmjs.org/package/optipng-bin): `npm install --save optipng-bin`
+```bash
+$ npm install --save optipng-bin
+```
 
 
-## Example usage
+## Usage
 
 ```js
 var execFile = require('child_process').execFile;
 var optipngPath = require('optipng-bin').path;
 
-execFile(optipngPath, ['-v'], function(err, stdout, stderr) {
+execFile(optipngPath, ['-v'], function (err, stdout, stderr) {
     console.log('OptiPNG version:', stdout.match(/\d\.\d\.\d/)[0]);
 });
 ```
 
-Can also be run directly from `./node_modules/.bin/optipng`.
+
+## CLI
+
+You can also use it as a CLI app by installing it globally:
+
+```bash
+$ npm install --global optipng-bin
+```
 
 
 ## License
