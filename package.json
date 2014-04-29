@@ -39,7 +39,7 @@
     "image"
   ],
   "dependencies": {
-    "bin-wrapper": "^0.2.0",
+    "bin-wrapper": "0.2.x",
     "chalk": "^0.4.0"
   },
   "devDependencies": {
