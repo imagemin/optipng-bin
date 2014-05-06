@@ -16,9 +16,9 @@ $ npm install --save optipng-bin
 
 ```js
 var execFile = require('child_process').execFile;
-var optipngPath = require('optipng-bin').path;
+var optipng = require('optipng-bin').path;
 
-execFile(optipngPath, ['-v'], function (err, stdout, stderr) {
+execFile(optipng, ['-v'], function (err, stdout, stderr) {
     console.log('OptiPNG version:', stdout.match(/\d\.\d\.\d/)[0]);
 });
 ```
@@ -26,10 +26,12 @@ execFile(optipngPath, ['-v'], function (err, stdout, stderr) {
 
 ## CLI
 
-You can also use it as a CLI app by installing it globally:
+```bash
+$ npm install --global optipng
+```
 
 ```bash
-$ npm install --global optipng-bin
+$ optipng --help
 ```
 
 

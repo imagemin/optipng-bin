@@ -3,7 +3,7 @@
 
 var assert = require('assert');
 var binCheck = require('bin-check');
-var BinWrapper = require('bin-wrapper');
+var BinBuild = require('bin-build');
 var fs = require('fs');
 var path = require('path');
 var spawn = require('child_process').spawn;
@@ -19,18 +19,17 @@ describe('optipng()', function () {
 	});
 
 	it('should rebuild the optipng binaries', function (cb) {
-		var bin = new BinWrapper({ bin: 'optipng', dest: path.join(__dirname, 'tmp') });
-		var bs = './configure --with-system-zlib ' +
-				 '--mandir="' + path.join(bin.dest, 'man') + '" ' +
-				 '--bindir="' + bin.dest + '" && ' +
-				 'make install';
+		var tmp = path.join(__dirname, 'tmp');
+		var builder = new BinBuild()
+			.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.4/optipng-0.7.4.tar.gz')
+			.cfg('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
+			.make('make install');
 
-		bin
-			.addSource('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.4/optipng-0.7.4.tar.gz')
-			.build(bs)
-			.on('finish', function () {
-				cb(assert(true));
-			});
+		builder.build(function (err) {
+			assert(!err);
+			assert(fs.existsSync(path.join(tmp, 'optipng')));
+			cb();
+		});
 	});
 
 	it('should return path to binary and verify that it is working', function (cb) {
@@ -54,9 +53,7 @@ describe('optipng()', function () {
 			var src = fs.statSync(path.join(__dirname, 'fixtures/test.png')).size;
 			var dest = fs.statSync(path.join(__dirname, 'tmp/test.png')).size;
 
-			assert(dest < src);
-			assert(dest > 0);
-			cb();
+			cb(assert(dest < src));
 		});
 	});
 });
