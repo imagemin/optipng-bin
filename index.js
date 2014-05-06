@@ -10,7 +10,7 @@ var path = require('path');
  * Initialize a new BinWrapper
  */
 
-var bin = new BinWrapper()
+var bin = new BinWrapper({ version: 0.7.4 })
 	.src('https://raw.github.com/yeoman/node-optipng-bin/0.3.4/vendor/osx/optipng', 'darwin')
 	.src('https://raw.github.com/yeoman/node-optipng-bin/0.3.4/vendor/linux/x86/optipng', 'linux', 'x86')
 	.src('https://raw.github.com/yeoman/node-optipng-bin/0.3.4/vendor/linux/x64/optipng', 'linux', 'x64')
