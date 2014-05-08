@@ -6,6 +6,8 @@ var chalk = require('chalk');
 var fs = require('fs');
 var path = require('path');
 
+var globalBin = false;
+
 /**
  * Initialize a new BinWrapper
  */
@@ -43,9 +45,12 @@ fs.exists(bin.use(), function (exists) {
 
 					console.log(chalk.green('✓ optipng built successfully'));
 				});
+			} else {
+				globalBin = true;
+				console.log(chalk.green('✓ pre-build test passed successfully'));
 			}
 
-			console.log(chalk.green('✓ pre-build test passed successfully'));
+
 		});
 	}
 });
@@ -54,4 +59,8 @@ fs.exists(bin.use(), function (exists) {
  * Module exports
  */
 
-module.exports.path = bin.use();
+module.exports.path = function(){
+	if (!globalBin)
+		bin.use();
+	return (process.platform === 'win32' ? 'optipng.exe' : 'optipng');
+}();
