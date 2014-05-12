@@ -32,7 +32,7 @@ fs.exists(bin.use(), function (exists) {
 				console.log(chalk.red('✗ pre-build test failed, compiling from source...'));
 
 				var builder = new BinBuild()
-					.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.4/optipng-0.7.4.tar.gz')
+					.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.5/optipng-0.7.5.tar.gz')
 					.cfg('./configure --with-system-zlib --prefix="' + bin.dest() + '" --bindir="' + bin.dest() + '"')
 					.make('make install');
 
