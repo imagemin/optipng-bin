@@ -3,7 +3,7 @@
   "version": "0.3.8",
   "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD and Windows",
   "license": "BSD",
-  "repository": "yeoman/optipng-bin",
+  "repository": "imagemin/optipng-bin",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
