@@ -1,6 +1,6 @@
 {
   "name": "optipng-bin",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD and Windows",
   "license": "BSD",
   "repository": "imagemin/optipng-bin",
