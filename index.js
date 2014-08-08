@@ -12,7 +12,7 @@ var pkg = require('./package.json');
  */
 
 var BIN_VERSION = '0.7.5';
-var BASE_URL = 'https://raw.github.com/imagemin/optipng-bin/' + pkg.version + '/vendor/';
+var BASE_URL = 'https://raw.github.com/imagemin/optipng-bin/v' + pkg.version + '/vendor/';
 
 /**
  * Initialize a new BinWrapper
