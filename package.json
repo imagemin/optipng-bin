@@ -2,7 +2,7 @@
   "name": "optipng-bin",
   "version": "0.3.11",
   "description": "OptiPNG wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD and Windows",
-  "license": "BSD",
+  "license": "MIT",
   "repository": "imagemin/optipng-bin",
   "author": {
     "name": "Sindre Sorhus",
