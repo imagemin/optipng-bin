@@ -1,4 +1,4 @@
-# optipng-bin [![Build Status](https://secure.travis-ci.org/imagemin/optipng-bin.svg?branch=master)](http://travis-ci.org/imagemin/optipng-bin)
+# optipng-bin [![Build Status](http://img.shields.io/travis/imagemin/optipng-bin.svg?style=flat)](http://travis-ci.org/imagemin/optipng-bin)
 
 > [OptiPNG](http://optipng.sourceforge.net) is a PNG optimizer that recompresses 
 image files to a smaller size, without losing any information.
