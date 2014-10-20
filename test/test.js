@@ -18,7 +18,7 @@ test('rebuild the optipng binaries', function (t) {
 		.cmd('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install');
 
-	builder.build(function (err) {
+	builder.run(function (err) {
 		t.assert(!err, err);
 
 		fs.exists(path.join(tmp, 'optipng'), function (exists) {
