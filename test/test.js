@@ -18,7 +18,7 @@ test('rebuild the optipng binaries', function (t) {
 		.cmd('make install');
 
 	builder.build(function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		fs.exists(path.join(tmp, 'optipng'), function (exists) {
 			t.assert(exists);
@@ -30,7 +30,7 @@ test('return path to binary and verify that it is working', function (t) {
 	t.plan(2);
 
 	binCheck(require('../').path, ['--version'], function (err, works) {
-		t.assert(!err);
+		t.assert(!err, err);
 		t.assert(works);
 	});
 });
@@ -46,13 +46,13 @@ test('minify a PNG', function (t) {
 	];
 
 	execFile(require('../').path, args, function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		fs.stat(path.join(__dirname, 'fixtures/test.png'), function (err, a) {
-			t.assert(!err);
+			t.assert(!err, err);
 
 			fs.stat(path.join(tmp, 'test.png'), function (err, b) {
-				t.assert(!err);
+				t.assert(!err, err);
 				t.assert(b.size < a.size);
 			});
 		});
