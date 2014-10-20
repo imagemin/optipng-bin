@@ -13,8 +13,9 @@ var tmp = path.join(__dirname, 'tmp');
 test('rebuild the optipng binaries', function (t) {
 	t.plan(3);
 
+	var version = require('../').version;
 	var builder = new BinBuild()
-		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.5/optipng-0.7.5.tar.gz')
+		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-' + version + '/optipng-' + version + '.tar.gz')
 		.cmd('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install');
 
