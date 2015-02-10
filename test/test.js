@@ -25,7 +25,7 @@ test('rebuild the optipng binaries', function (t) {
 test('return path to binary and verify that it is working', function (t) {
 	t.plan(2);
 
-	binCheck(require('../').path, ['--version'], function (err, works) {
+	binCheck(require('../'), ['--version'], function (err, works) {
 		t.assert(!err, err);
 		t.assert(works);
 	});
@@ -43,7 +43,7 @@ test('minify a PNG', function (t) {
 		src
 	];
 
-	execFile(require('../').path, args, function (err) {
+	execFile(require('../'), args, function (err) {
 		t.assert(!err, err);
 
 		compareSize(src, dest, function (err, res) {
