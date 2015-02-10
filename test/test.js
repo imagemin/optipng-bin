@@ -1,30 +1,25 @@
 'use strict';
 
-var binCheck = require('bin-check');
-var BinBuild = require('bin-build');
-var compareSize = require('compare-size');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
+var binCheck = require('bin-check');
+var BinBuild = require('bin-build');
+var compareSize = require('compare-size');
 var test = require('ava');
 var tmp = path.join(__dirname, 'tmp');
 
 test('rebuild the optipng binaries', function (t) {
 	t.plan(2);
 
-	var version = require('../').version;
-	var builder = new BinBuild()
-		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-' + version + '/optipng-' + version + '.tar.gz')
+	new BinBuild()
+		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.5/optipng-0.7.5.tar.gz')
 		.cmd('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
-		.cmd('make install');
-
-	builder.run(function (err) {
-		t.assert(!err, err);
-
-		fs.exists(path.join(tmp, 'optipng'), function (exists) {
-			t.assert(exists);
+		.cmd('make install')
+		.run(function (err) {
+			t.assert(!err, err);
+			t.assert(fs.existsSync(path.join(tmp, 'optipng')));
 		});
-	});
 });
 
 test('return path to binary and verify that it is working', function (t) {
