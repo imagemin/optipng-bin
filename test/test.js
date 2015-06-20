@@ -3,12 +3,12 @@
 
 var assert = require('assert');
 var execFile = require('child_process').execFile;
-var fs = require('fs');
 var path = require('path');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
 var compareSize = require('compare-size');
 var mkdirp = require('mkdirp');
+var pathExists = require('path-exists');
 var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
@@ -27,7 +27,7 @@ it('rebuild the optipng binaries', function (cb) {
 		.cmd('make install')
 		.run(function (err) {
 			assert(!err);
-			assert(fs.existsSync(path.join(tmp, 'optipng')));
+			assert(pathExists.sync(path.join(tmp, 'optipng')));
 			cb();
 		});
 });
