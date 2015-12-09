@@ -1,4 +1,4 @@
-# optipng-bin [![Build Status](http://img.shields.io/travis/imagemin/optipng-bin.svg?style=flat)](http://travis-ci.org/imagemin/optipng-bin)
+# optipng-bin [![Build Status](https://travis-ci.org/imagemin/optipng-bin.svg?branch=master)](https://travis-ci.org/imagemin/optipng-bin)
 
 > [OptiPNG](http://optipng.sourceforge.net) is a PNG optimizer that recompresses 
 image files to a smaller size, without losing any information.
@@ -14,10 +14,10 @@ $ npm install --save optipng-bin
 ## Usage
 
 ```js
-var execFile = require('child_process').execFile;
-var optipng = require('optipng-bin');
+const {execFile} = require('child_process');
+const optipng = require('optipng-bin');
 
-execFile(optipng, ['-out', 'output.png', 'input.png'], function (err) {
+execFile(optipng, ['-out', 'output.png', 'input.png'], err => {
 	console.log('Image minified!');
 });
 ```
