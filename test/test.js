@@ -26,7 +26,11 @@ it('rebuild the optipng binaries', function (cb) {
 		.cmd('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install')
 		.run(function (err) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(pathExists.sync(path.join(tmp, 'optipng')));
 			cb();
 		});
@@ -34,7 +38,11 @@ it('rebuild the optipng binaries', function (cb) {
 
 it('return path to binary and verify that it is working', function (cb) {
 	binCheck(require('../'), ['--version'], function (err, works) {
-		assert(!err);
+		if (err) {
+			cb(err);
+			return;
+		}
+
 		assert(works);
 		cb();
 	});
@@ -51,10 +59,17 @@ it('minify a PNG', function (cb) {
 	];
 
 	execFile(require('../'), args, function (err) {
-		assert(!err);
+		if (err) {
+			cb(err);
+			return;
+		}
 
 		compareSize(src, dest, function (err, res) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(res[dest] < res[src]);
 			cb();
 		});
