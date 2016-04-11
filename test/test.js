@@ -22,7 +22,7 @@ afterEach(function () {
 
 it('rebuild the optipng binaries', function (cb) {
 	new BinBuild()
-		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.5/optipng-0.7.5.tar.gz')
+		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.6/optipng-0.7.6.tar.gz')
 		.cmd('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install')
 		.run(function (err) {
