@@ -10,6 +10,7 @@ image files to a smaller size, without losing any information.
 $ npm install --save optipng-bin
 ```
 
+If needed, you can specify the `optipng_bin` variable to change the default optipng executable download path.
 
 ## Usage
 
