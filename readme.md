@@ -2,6 +2,8 @@
 
 > [OptiPNG](http://optipng.sourceforge.net) is a PNG optimizer that recompresses image files to a smaller size, without losing any information
 
+You probably want [`imagemin-optipng`](https://github.com/imagemin/imagemin-optipng) instead.
+
 
 ## Install
 
@@ -35,4 +37,4 @@ $ optipng --help
 
 ## License
 
-MIT © [imagemin](https://github.com/imagemin)
+MIT © [Imagemin](https://github.com/imagemin)
