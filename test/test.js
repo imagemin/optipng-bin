@@ -1,45 +1,77 @@
+/* eslint-env mocha */
 'use strict';
-const fs = require('fs');
-const path = require('path');
-const test = require('ava');
-const execa = require('execa');
-const tempy = require('tempy');
-const binCheck = require('bin-check');
-const BinBuild = require('bin-build');
-const compareSize = require('compare-size');
-const optipng = require('..');
 
-test.cb('rebuild the optipng binaries', t => {
-	const tmp = tempy.directory();
+var assert = require('assert');
+var execFile = require('child_process').execFile;
+var path = require('path');
+var binCheck = require('bin-check');
+var BinBuild = require('bin-build');
+var compareSize = require('compare-size');
+var mkdirp = require('mkdirp');
+var pathExists = require('path-exists');
+var rimraf = require('rimraf');
+var tmp = path.join(__dirname, 'tmp');
 
+beforeEach(function () {
+	mkdirp.sync(tmp);
+});
+
+afterEach(function () {
+	rimraf.sync(tmp);
+});
+
+it('rebuild the optipng binaries', function (cb) {
 	new BinBuild()
 		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.6/optipng-0.7.6.tar.gz')
-		.cmd(`./configure --with-system-zlib --prefix="${tmp}" --bindir="${tmp}"`)
+		.cmd('./configure --with-system-zlib --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install')
-		.run(err => {
-			t.ifError(err);
-			t.true(fs.existsSync(path.join(tmp, 'optipng')));
-			t.end();
+		.run(function (err) {
+			if (err) {
+				cb(err);
+				return;
+			}
+
+			assert(pathExists.sync(path.join(tmp, 'optipng')));
+			cb();
 		});
 });
 
-test('return path to binary and verify that it is working', async t => {
-	t.true(await binCheck(optipng, ['--version']));
+it('return path to binary and verify that it is working', function (cb) {
+	binCheck(require('../'), ['--version'], function (err, works) {
+		if (err) {
+			cb(err);
+			return;
+		}
+
+		assert(works);
+		cb();
+	});
 });
 
-test('minify a PNG', async t => {
-	const tmp = tempy.directory();
-	const src = path.join(__dirname, 'fixtures/test.png');
-	const dest = path.join(tmp, 'test.png');
-	const args = [
+it('minify a PNG', function (cb) {
+	var src = path.join(__dirname, 'fixtures/test.png');
+	var dest = path.join(tmp, 'test.png');
+	var args = [
 		'-strip', 'all',
 		'-clobber',
 		'-out', dest,
 		src
 	];
 
-	await execa(optipng, args);
-	const res = await compareSize(src, dest);
+	execFile(require('../'), args, function (err) {
+		if (err) {
+			cb(err);
+			return;
+		}
 
-	t.true(res[dest] < res[src]);
+		compareSize(src, dest, function (err, res) {
+			if (err) {
+				cb(err);
+				return;
+			}
+
+			assert(res[dest] < res[src]);
+			cb();
+		});
+	});
 });

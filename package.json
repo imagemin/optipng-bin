@@ -20,15 +20,15 @@
       "url": "github.com/shinnn"
     }
   ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "bin": {
     "optipng": "cli.js"
   },
-  "engines": {
-    "node": ">=4"
-  },
   "scripts": {
     "postinstall": "node lib/install.js",
-    "test": "xo && ava"
+    "test": "xo && mocha --timeout 50000"
   },
   "files": [
     "index.js",
@@ -36,26 +36,25 @@
     "lib"
   ],
   "keywords": [
-    "imagemin",
     "compress",
     "image",
     "img",
     "minify",
     "optimize",
-    "png",
-    "optipng"
+    "png"
   ],
   "dependencies": {
-    "bin-build": "^2.2.0",
+    "bin-build": "^2.0.0",
     "bin-wrapper": "^3.0.0",
     "logalot": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "*",
-    "bin-check": "^4.0.1",
-    "compare-size": "^3.0.0",
-    "execa": "^0.6.3",
-    "tempy": "^0.1.0",
+    "bin-check": "^1.0.0",
+    "compare-size": "^1.0.1",
+    "mkdirp": "^0.5.0",
+    "mocha": "^2.2.4",
+    "path-exists": "^1.0.0",
+    "rimraf": "^2.3.2",
     "xo": "*"
   }
 }
