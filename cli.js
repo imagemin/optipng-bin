@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-const { spawn } = require('child_process');
+const {spawn} = require('child_process');
 const optipng = require('.');
 
 const input = process.argv.slice(2);

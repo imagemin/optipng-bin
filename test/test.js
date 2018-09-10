@@ -11,7 +11,7 @@ const optipng = require('..');
 
 async function makeExecutable() {
 	try {
-		await execa('chmod', ['+x', m]);
+		await execa('chmod', ['+x', optipng]);
 	} catch (_) {
 		console.log('not executable');
 	}
