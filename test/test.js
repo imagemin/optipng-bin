@@ -9,6 +9,14 @@ const BinBuild = require('bin-build');
 const compareSize = require('compare-size');
 const optipng = require('..');
 
+async function makeExecutable() {
+	try {
+		await execa('chmod', ['+x', m]);
+	} catch (_) {
+		console.log('not executable');
+	}
+}
+
 test.cb('rebuild the optipng binaries', t => {
 	const tmp = tempy.directory();
 
@@ -24,17 +32,21 @@ test.cb('rebuild the optipng binaries', t => {
 });
 
 test('return path to binary and verify that it is working', async t => {
+	makeExecutable();
 	t.true(await binCheck(optipng, ['--version']));
 });
 
 test('minify a PNG', async t => {
+	makeExecutable();
 	const tmp = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.png');
 	const dest = path.join(tmp, 'test.png');
 	const args = [
-		'-strip', 'all',
+		'-strip',
+		'all',
 		'-clobber',
-		'-out', dest,
+		'-out',
+		dest,
 		src
 	];
 
