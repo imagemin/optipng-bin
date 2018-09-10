@@ -17,13 +17,13 @@ async function makeExecutable() {
 	}
 }
 
-test.cb('rebuild the optipng binaries', async t => {
+test('rebuild the optipng binaries', async t => {
 	const tmp = tempy.directory();
 
 	await binBuild.url('https://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.6/optipng-0.7.6.tar.gz', [
-			`./configure --with-system-zlib --prefix="${bin.dest()}" --bindir="${bin.dest()}"`,
-			'make install'
-		]);
+		`./configure --with-system-zlib --prefix="${tmp}" --bindir="${tmp}"`,
+		'make install'
+	]);
 
 	t.true(fs.existsSync(path.join(tmp, 'optipng')));
 });
