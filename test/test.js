@@ -29,9 +29,11 @@ test('minify a PNG', async t => {
 	const src = path.join(__dirname, 'fixtures/test.png');
 	const dest = path.join(tmp, 'test.png');
 	const args = [
-		'-strip', 'all',
+		'-strip',
+		'all',
 		'-clobber',
-		'-out', dest,
+		'-out',
+		dest,
 		src
 	];
 
