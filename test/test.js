@@ -5,22 +5,19 @@ const test = require('ava');
 const execa = require('execa');
 const tempy = require('tempy');
 const binCheck = require('bin-check');
-const BinBuild = require('bin-build');
+const binBuild = require('bin-build');
 const compareSize = require('compare-size');
 const optipng = require('..');
 
-test.cb('rebuild the optipng binaries', t => {
+test('rebuild the optipng binaries', async t => {
 	const tmp = tempy.directory();
 
-	new BinBuild()
-		.src('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.6/optipng-0.7.6.tar.gz')
-		.cmd(`./configure --with-system-zlib --prefix="${tmp}" --bindir="${tmp}"`)
-		.cmd('make install')
-		.run(err => {
-			t.ifError(err);
-			t.true(fs.existsSync(path.join(tmp, 'optipng')));
-			t.end();
-		});
+	await binBuild.url('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.7/optipng-0.7.7.tar.gz', [
+		`./configure --with-system-zlib --prefix="${tmp}" --bindir="${tmp}"`,
+		'make install'
+	]);
+
+	t.true(fs.existsSync(path.join(tmp, 'optipng')));
 });
 
 test('return path to binary and verify that it is working', async t => {
@@ -32,9 +29,11 @@ test('minify a PNG', async t => {
 	const src = path.join(__dirname, 'fixtures/test.png');
 	const dest = path.join(tmp, 'test.png');
 	const args = [
-		'-strip', 'all',
+		'-strip',
+		'all',
 		'-clobber',
-		'-out', dest,
+		'-out',
+		dest,
 		src
 	];
 
