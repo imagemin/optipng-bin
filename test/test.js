@@ -10,6 +10,12 @@ const compareSize = require('compare-size');
 const optipng = require('..');
 
 test('rebuild the optipng binaries', async t => {
+	// Skip the test on Windows
+	if (process.platform === 'win32') {
+		t.pass();
+		return;
+	}
+
 	const tmp = tempy.directory();
 
 	await binBuild.url('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.7/optipng-0.7.7.tar.gz', [
