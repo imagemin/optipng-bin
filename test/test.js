@@ -18,7 +18,7 @@ test('rebuild the optipng binaries', async t => {
 
 	const tmp = tempy.directory();
 
-	await binBuild.url('http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.7/optipng-0.7.7.tar.gz', [
+	await binBuild.file(path.resolve(__dirname, '../vendor/source/optipng.tar.gz'), [
 		`./configure --with-system-zlib --prefix="${tmp}" --bindir="${tmp}"`,
 		'make install'
 	]);
