@@ -15,12 +15,16 @@ $ npm install --save optipng-bin
 ## Usage
 
 ```js
+const {promisify} = require('util');
 const {execFile} = require('child_process');
 const optipng = require('optipng-bin');
 
-execFile(optipng, ['-out', 'output.png', 'input.png'], err => {
+const execFileP = promsify(execFile);
+
+(async () => {
+	await execFile(optipng, ['-out', 'output.png', 'input.png']);
 	console.log('Image minified!');
-});
+})();
 ```
 
 
@@ -33,8 +37,3 @@ $ npm install --global optipng-bin
 ```
 $ optipng --help
 ```
-
-
-## License
-
-MIT © [Imagemin](https://github.com/imagemin)

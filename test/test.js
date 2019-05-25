@@ -32,19 +32,19 @@ test('return path to binary and verify that it is working', async t => {
 
 test('minify a PNG', async t => {
 	const tmp = tempy.directory();
-	const src = path.join(__dirname, 'fixtures/test.png');
-	const dest = path.join(tmp, 'test.png');
-	const args = [
+	const sourcePath = path.join(__dirname, 'fixtures/test.png');
+	const destinationPath = path.join(tmp, 'test.png');
+	const arguments_ = [
 		'-strip',
 		'all',
 		'-clobber',
 		'-out',
-		dest,
-		src
+		destinationPath,
+		sourcePath
 	];
 
-	await execa(optipng, args);
-	const res = await compareSize(src, dest);
+	await execa(optipng, arguments_);
+	const result = await compareSize(sourcePath, destinationPath);
 
-	t.true(res[dest] < res[src]);
+	t.true(result[destinationPath] < result[sourcePath]);
 });
