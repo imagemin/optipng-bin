@@ -8,7 +8,7 @@
 		"optipng": "cli.js"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	},
 	"scripts": {
 		"postinstall": "node lib/install.js",
@@ -35,11 +35,11 @@
 		"logalot": "^2.0.0"
 	},
 	"devDependencies": {
-		"ava": "^1.4.1",
+		"ava": "^3.8.0",
 		"bin-check": "^4.0.1",
 		"compare-size": "^3.0.0",
-		"execa": "^1.0.0",
-		"tempy": "^0.3.0",
-		"xo": "^0.24.0"
+		"execa": "^4.0.0",
+		"tempy": "^0.5.0",
+		"xo": "^0.30.0"
 	}
 }

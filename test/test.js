@@ -16,14 +16,14 @@ test('rebuild the optipng binaries', async t => {
 		return;
 	}
 
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 
 	await binBuild.file(path.resolve(__dirname, '../vendor/source/optipng.tar.gz'), [
-		`./configure --with-system-zlib --prefix="${tmp}" --bindir="${tmp}"`,
+		`./configure --with-system-zlib --prefix="${temporary}" --bindir="${temporary}"`,
 		'make install'
 	]);
 
-	t.true(fs.existsSync(path.join(tmp, 'optipng')));
+	t.true(fs.existsSync(path.join(temporary, 'optipng')));
 });
 
 test('return path to binary and verify that it is working', async t => {
@@ -31,9 +31,9 @@ test('return path to binary and verify that it is working', async t => {
 });
 
 test('minify a PNG', async t => {
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 	const sourcePath = path.join(__dirname, 'fixtures/test.png');
-	const destinationPath = path.join(tmp, 'test.png');
+	const destinationPath = path.join(temporary, 'test.png');
 	const arguments_ = [
 		'-strip',
 		'all',
