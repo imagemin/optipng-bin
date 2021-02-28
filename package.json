@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"postinstall": "node lib/install.js",
-		"test": "xo && ava"
+		"test": "xo && ava --timeout=120s"
 	},
 	"files": [
 		"index.js",
