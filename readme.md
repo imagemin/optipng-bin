@@ -1,4 +1,4 @@
-# optipng-bin ![GitHub Actions Status](https://github.com/imagemin/optipng-bin/workflows/test/badge.svg)
+# optipng-bin ![GitHub Actions Status](https://github.com/imagemin/optipng-bin/workflows/test/badge.svg?branch=main)
 
 > [OptiPNG](http://optipng.sourceforge.net) is a PNG optimizer that recompresses image files to a smaller size, without losing any information
 
@@ -15,16 +15,12 @@ $ npm install --save optipng-bin
 ## Usage
 
 ```js
-const {promisify} = require('util');
-const {execFile} = require('child_process');
-const optipng = require('optipng-bin');
+import {execFile} from 'node:child_process';
+import optipng from 'optipng-bin';
 
-const execFileP = promsify(execFile);
-
-(async () => {
-	await execFile(optipng, ['-out', 'output.png', 'input.png']);
+execFile(optipng, ['-out', 'output.png', 'input.png'], error => {
 	console.log('Image minified!');
-})();
+});
 ```
 
 
