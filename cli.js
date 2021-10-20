@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-'use strict';
-const {spawn} = require('child_process');
-const optipng = require('.');
+import {spawn} from 'node:child_process';
+import process from 'node:process';
+import optipng from './index.js';
 
 const input = process.argv.slice(2);
 

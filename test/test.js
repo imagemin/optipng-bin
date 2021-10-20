@@ -1,13 +1,14 @@
-'use strict';
-const fs = require('fs');
-const path = require('path');
-const test = require('ava');
-const execa = require('execa');
-const tempy = require('tempy');
-const binCheck = require('bin-check');
-const binBuild = require('bin-build');
-const compareSize = require('compare-size');
-const optipng = require('..');
+import fs from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+import {fileURLToPath} from 'node:url';
+import test from 'ava';
+import execa from 'execa';
+import tempy from 'tempy';
+import binCheck from 'bin-check';
+import binBuild from 'bin-build';
+import compareSize from 'compare-size';
+import optipng from '../index.js';
 
 test('rebuild the optipng binaries', async t => {
 	// Skip the test on Windows
@@ -17,10 +18,11 @@ test('rebuild the optipng binaries', async t => {
 	}
 
 	const temporary = tempy.directory();
+	const source = fileURLToPath(new URL('../vendor/source/optipng.tar.gz', import.meta.url));
 
-	await binBuild.file(path.resolve(__dirname, '../vendor/source/optipng.tar.gz'), [
+	await binBuild.file(source, [
 		`./configure --with-system-zlib --prefix="${temporary}" --bindir="${temporary}"`,
-		'make install'
+		'make install',
 	]);
 
 	t.true(fs.existsSync(path.join(temporary, 'optipng')));
@@ -32,7 +34,7 @@ test('return path to binary and verify that it is working', async t => {
 
 test('minify a PNG', async t => {
 	const temporary = tempy.directory();
-	const sourcePath = path.join(__dirname, 'fixtures/test.png');
+	const sourcePath = fileURLToPath(new URL('./fixtures/test.png', import.meta.url));
 	const destinationPath = path.join(temporary, 'test.png');
 	const arguments_ = [
 		'-strip',
@@ -40,7 +42,7 @@ test('minify a PNG', async t => {
 		'-clobber',
 		'-out',
 		destinationPath,
-		sourcePath
+		sourcePath,
 	];
 
 	await execa(optipng, arguments_);
