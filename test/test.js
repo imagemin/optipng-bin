@@ -3,7 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 import {fileURLToPath} from 'node:url';
 import test from 'ava';
-import execa from 'execa';
+import {execa} from 'execa';
 import tempy from 'tempy';
 import binCheck from 'bin-check';
 import binBuild from 'bin-build';
@@ -34,7 +34,7 @@ test('return path to binary and verify that it is working', async t => {
 
 test('minify a PNG', async t => {
 	const temporary = tempy.directory();
-	const sourcePath = fileURLToPath(new URL('./fixtures/test.png', import.meta.url));
+	const sourcePath = fileURLToPath(new URL('fixtures/test.png', import.meta.url));
 	const destinationPath = path.join(temporary, 'test.png');
 	const arguments_ = [
 		'-strip',
