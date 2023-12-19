@@ -1,4 +1,4 @@
-# optipng-bin ![GitHub Actions Status](https://github.com/imagemin/optipng-bin/workflows/test/badge.svg?branch=main)
+# optipng-bin [![test](https://github.com/imagemin/optipng-bin/actions/workflows/test.yml/badge.svg)](https://github.com/imagemin/optipng-bin/actions/workflows/test.yml)
 
 > [OptiPNG](http://optipng.sourceforge.net) is a PNG optimizer that recompresses image files to a smaller size, without losing any information
 
