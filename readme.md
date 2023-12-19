@@ -7,8 +7,8 @@ You probably want [`imagemin-optipng`](https://github.com/imagemin/imagemin-opti
 
 ## Install
 
-```
-$ npm install --save optipng-bin
+```sh
+npm install --save optipng-bin
 ```
 
 
@@ -26,10 +26,10 @@ execFile(optipng, ['-out', 'output.png', 'input.png'], error => {
 
 ## CLI
 
-```
-$ npm install --global optipng-bin
+```sh
+npm install --global optipng-bin
 ```
 
-```
-$ optipng --help
+```sh
+optipng --help
 ```
